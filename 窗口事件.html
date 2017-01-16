@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		body{width: 2000px;height: 2000px;}
+	</style>
+</head>
+<body>
+    <!-- <img src="xxx.jpg" alt=""> -->
+	<script>
+		//onload 当文档的资源全部加载完毕，包括从网上下载的资源
+		//       图片完成也会触发onload操作
+
+		//如果加载失败会触发onerror
+                                                                                                       
+
+        var imgElement = document.getElementsByTagName('img')[0];
+        imgElement.onload = function(){
+            console.log('图片加载成功');
+        }
+
+        imgElement.onerror = function(){
+        	//当图片加载失败时设置默认图片
+        	console.log('当图片加载失败时，设置默认图片')
+        	this.src = 'images/0.jpg';
+        }
+		//onscroll:当文档或元素滚动时持续发生的事件
+        document.onclick = function(){
+        	console.log('onscroll');
+
+            //向上滚出多少
+            //兼容性的写法 IE   document.documentElement.scrollTop 
+            //             其他 document.body.scrollTop
+        	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        	//向左滚出多少
+        	var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+        	console.log(scrollTop);
+        	console.log(scrollLeft);
+        }
+        //onresize  当窗体的大小发生变化时触发的事件
+
+        window.onresize = function(){
+        	//可以获取可视区域的大小
+        	var clientWidth = document.documentElement.clientWidth;
+        	var clientHeight = document.documentElement.clientHeight;
+
+        	console.log(clientWidth);
+        	console.log(clientHeight);
+
+        	//获取body的大小
+        	var bodyWidth = document.body.clientWidth;
+        	var bodyHeigth = document.body.clientHeight;
+
+        	console.log(bodyWidth);
+        	console.log(bodyHeigth);
+        }
+        
+
+	</script>
+</body>
+</html>

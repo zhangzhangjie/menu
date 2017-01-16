@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.clear:after{
+			content: "";
+			display: block;
+			visibility:hidden;
+			clear: both;
+			height: 0px;
+		}
+		.box{
+			margin: 100px auto;
+			width: 450px;
+			border:1px solid black;
+			position: relative;
+			height: 150px;
+		}
+		.group{
+			background-color: orange;
+			height: 30px;
+		}
+		.group>a{
+			float: left;
+			text-decoration: none;
+			text-align: center;
+			line-height: 30px;
+		}
+		.imagelist{
+			position: absolute;
+			top: 35px;
+			left: 0px;
+			display: none;
+		}
+		.active{
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="group clear">
+			<a href="#" class="active">第一组</a>
+			<a href="#">第二组</a>
+			<a href="#">第三组</a>
+		</div>
+		<div class="imagelist" style="display: block">
+			<img src="images/0.jpg" alt="">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="imagelist">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+			<img src="images/5.jpg" alt="">
+		</div>
+		<div class="imagelist">
+			<img src="images/6.jpg" alt="">
+			<img src="images/7.jpg" alt="">
+			<img src="images/8.jpg" alt="">
+		</div>
+	</div>
+	<script>
+		window.onload = function(){
+			var aList = document.querySelectorAll('.group>a');
+			var imageList = document.getElementsByClassName('imagelist');
+
+			for (var i = 0; i < aList.length; i++) {
+				aList[i].index = i;
+				aList[i].onmouseover = function(){
+					var aIndex = this.index;
+					for (var j = 0; j < aList.length; j++) {
+						if (j==aIndex) {
+							aList[j].className = 'active';
+							imageList[j].style.display = 'block';
+						}else{
+							aList[j].className = '';
+							imageList[j].style.display = '';
+						}
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		*{margin: 0;padding: 0;}
+		.clear:after{content: "";clear:both;display: block;height: 0px;overflow: hidden;}
+		.left{float: left;position: relative;}
+		.right{float: right;}
+		.left>h2{font-size: 16px;line-height: 30px;margin-top:10px;width: 150px;text-align: center;background-color: yellow;}
+		.left>ul{position: absolute;top:40px;left: 0px;background-color: blue;width: 150px;display: none;}
+		.left>ul>li{line-height: 30px;}
+		.left>ul>li:hover{background-color: lightgray;}
+		.content{position: absolute;width: 200px;height: 200px;top:40px;left: 150px;background-color: green;display: none;color: #fff;text-align: center;line-height: 200px;}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<img src="images/top.png" alt="">
+	</div>
+		<div class="center clear">
+		  <div class="left">
+			<h2>全部商品分类</h2>
+			<ul>
+				<li>电子书阅读器</li>
+				<li>平板电脑</li>
+				<li>数码家电</li>
+			</ul>
+			<div class="content">
+				电子书阅读器的内容
+			</div>
+			<div class="content">
+				平板电脑的内容
+			</div>
+			<div class="content">
+				数码家电的内容
+			</div>
+		  </div>
+		<div class="right">
+			<img src="images/top2.png" alt="" id="right">
+		</div>
+		  	
+	  </div>
+		<div class="bottom">
+			<img src="images/banner.png" alt="">
+		</div>
+
+		<script>
+			window.onload = function(){
+				var h2Element = document.querySelector('.left>h2');
+				var ulElement = document.querySelector('.left>ul');
+				var contentList = document.getElementsByClassName('content');
+
+				h2Element.onmouseover = function(){
+                   ulElement.style.display = 'block';
+				}
+				h2Element.onmouseout = function(){
+                   ulElement.style.display = 'none';
+				}
+
+				ulElement.onmouseover = function(){
+                   this.style.display = 'block';
+				}
+				ulElement.onmouseout = function(){
+                   this.style.display = 'none';
+				}
+
+				//遍历li，给每个li设置over，把它对于的div.content显示出来，其他的隐藏
+
+				var liList = ulElement.children;
+				for (var i = 0; i < liList.length; i++) {
+					//设置每个li的次序
+					liList[i].index = i;
+					liList[i].onmouseover = function(){
+                       var liIndex = this.index;
+                       //把对应次序的div.content显示出来
+                       // for (var j = 0; j < contentList.length; j++) {
+                       // 	 if (j == liIndex) {
+                       // 	 	contentList[j].style.display = 'block';
+                       // 	 }else{
+                       // 	 	contentList[j].style.display = 'none';
+                       // 	 }
+                       // }
+                       contentList[liIndex].style.display = 'block';
+					}
+
+					liList[i].onmouseout = function(){
+						var liIndex = this.index;
+						contentList[liIndex].style.display = 'none';
+					}
+				}
+				//针对div.content处理mouseover操作
+				for (var i = 0; i < contentList.length; i++) {
+					contentList[i].onmouseover = function(){
+						this.style.display = 'block';
+						//让ul继续显示
+						ulElement.style.display = 'block';
+					}
+					contentList[i].onmouseout = function(){
+						this.style.display = 'none';
+					}
+				}
+
+
+			}
+		</script>
+		
+	
+</body>
+</html>

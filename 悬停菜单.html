@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+	  .clear:after{content: "";clear: both;display: block;height: 0px;overflow: hidden;}
+		*{margin: 0;padding: 0;}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<img src="images/box1.png" alt="">
+	</div>
+	<div class="box2">
+		<img src="images/box2.png" alt="">
+	</div>
+	<div class="box3">
+		<img src="images/box3.png" alt="">
+	</div>
+	<div class="box4">
+		<img src="images/box4.png" alt="">
+	</div>
+	<div class="box5">
+		<img src="images/box5.png" alt="">
+	</div>
+	<div class="box6">
+		<img src="images/box6.png" alt="">
+	</div>
+	<div class="box7">
+		<img src="images/box7.png" alt="">
+	</div>
+	<div class="box8">
+		<img src="images/box8.png" alt="">
+	</div>
+	<div class="box9">
+		<img src="images/box9.png" alt="">
+	</div>
+
+	<script>
+		window.onload = function(){
+          //1:获取可视区域的高度
+
+          //2:在滚动事件中，获取内容滚出多少
+
+          //3:如果滚出的大小大于可视区域的高度，把 菜单悬停
+          // div.style.position = 'fixed';
+          //如果小于可视区域的高度，把position设置默认值 static
+          //div.style.position = 'static';
+
+          var box1Element = document.getElementsByClassName('box1')[0];
+
+          document.onscroll = function(){
+          	//1:
+          	var clientHeight = document.documentElement.clientHeight;
+
+          	//2:
+          	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          	//3:
+          	if ( scrollTop > clientHeight ) {
+          		box1Element.style.position = 'fixed';
+          	}else{
+          		box1Element.style.position = 'static';
+          	}
+          }
+
+		}
+	</script>
+</body>
+</html>

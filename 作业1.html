@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+	  .clear:after{content: "";display: block;overflow: hidden;height: 0px;clear: both;}
+	  li{list-style: none;}
+		*{margin: 0;padding: 0;}
+		.mydiv{background-color: #ddd;margin: 0px auto;width: 800px;position: relative;}
+		.mydiv>.myul>li{float: left;font-size: 16px;width: 100px;text-align: center;}
+		.content{width: 100px;border: 1px solid black;}
+		.content>li:hover{background-color: yellow;}
+		.content>li{line-height: 30px;text-align: center;}
+		.c1{position: absolute;top: 16px;left: 0px;}
+		.c2{position: absolute;top: 16px;left: 100px;}
+		.c3{position: absolute;top: 16px;left: 200px;}
+		.c4{position: absolute;top: 16px;left: 300px;}
+		.c5{position: absolute;top: 16px;left: 400px;}
+		.content{display: none;}
+
+	</style>
+</head>
+<body>
+	<div class="mydiv">
+		<ul class="myul clear">
+			<li>我要买</li>
+			<li>我的淘宝</li>
+			<li>卖家中心</li>
+			<li>联系客服</li>
+			<li>收藏夹</li>
+		</ul>	
+		<ul class="content c1">
+			<li>我要买</li>
+			<li>寻找好友</li>
+			<li>商品分类</li>
+		</ul>
+
+		<ul class="content c2">
+			<li>我的淘宝</li>
+			<li>寻找好友</li>
+			<li>商品分类</li>
+		</ul>
+
+		<ul class="content c3">
+			<li>卖家中心</li>
+			<li>寻找好友</li>
+			<li>商品分类</li>
+		</ul>
+
+		<ul class="content c4">
+			<li>练习客服</li>
+			<li>寻找好友</li>
+			<li>商品分类</li>
+		</ul>
+
+		<ul class="content c5">
+			<li>收藏夹</li>
+			<li>寻找好友</li>
+			<li>商品分类</li>
+		</ul>
+	</div>
+
+	<script>
+		var liList = document.querySelectorAll('.myul>li');
+		var ulList = document.getElementsByClassName('content');
+
+		for (var i = 0; i < liList.length; i++) {
+		 	liList[i].index = i;
+
+		 	liList[i].onmouseover = function(){
+		 		var liIndex = this.index;
+		 		for (var j = 0; j < liList.length; j++) {
+		 			if (j==liIndex) {
+		 				ulList[j].style.display ='block';
+		 			}else{
+		 				ulList[j].style.display ='none';
+		 			}
+		 		}
+		 	}
+		 	liList[i].onmouseout = function(){
+		 		var liIndex = this.index;
+		 		ulList[liIndex].style.display = 'none';  
+		 	}
+		 }
+		 for (var i = 0; i < ulList.length; i++) {
+		  	ulList[i].onmouseout = function(){
+		  		this.style.display = 'none';
+		  	}
+		  	ulList[i].onmouseover = function(){
+		  		this.style.display = 'block';
+		  	}
+		  } 
+	</script>
+</body>
+</html>

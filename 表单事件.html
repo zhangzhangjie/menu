@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<form action="" id="formId" method="get" accept-charset="utf-8">
+		<input  id="inputId" type="text" name="">
+		<input id="submitId" type="submit" name="提交">
+		<input id="resetId" type="reset" name="重置">
+		
+	</form>
+
+	<script>
+		//onselect 当选中input中的文本时会触发的事件
+		//onsubmit 当点击提交按钮时触发的事件
+		//onreset 当点击重置按钮时触发的事件
+		//onfocus 当获取输入焦点时触发的事件
+		//onblur  当失去焦点时触发的事件
+		//onchange  当失去焦点后当input中的内容有修改时触发的事件
+
+		//focusin
+		//focusout
+		//获取焦点和失去焦点，不会产生冒泡
+
+		var formElement = document.getElementById('formId');
+		var inputElement = document.getElementById('inputId');
+
+		inputElement.onselect = function(e){
+           alert(this.value);
+		}
+		inputElement.onfocus = function(){
+           this.style.outline = '1px solid red';
+		}
+		inputElement.onblur = function(){
+           this.style.outline = 'none';
+		}
+		inputElement.onchange = function(){
+           //失去焦点后如果内容有修改，触发
+           console.log(this.value);
+		}
+
+        //点击提交按钮，系统有默认行为，如果要阻止系统的默认行为，可以拦截onsubmit，并在函数中阻止系统的默认行为
+		formElement.onsubmit = function(ev){
+			//confirm 返回boolean true,说明用户点击的是确定
+			//                     false  说明用户点击的是取消
+			var result = confirm('你确定要提交么？');
+			if (result) {
+				//执行系统默认行为
+				return true;
+			}else{
+				//阻止默认行为
+				// var e = ev || event;
+				// e.preventDefault();
+				return false;
+			}
+		}
+		formElement.onreset = function(ev){
+			var inputValue = inputElement.value;
+			//prompt 弹框输入，返回值是用户的输入值
+			var returnValue = prompt('请输入数字');
+			if (inputValue == returnValue) {
+				return true;
+			}else{
+				//阻止系统默认行为，不重置
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

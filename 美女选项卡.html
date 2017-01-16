@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		*{margin: 0;padding: 0;}
+		.clear:after{content: "";clear: both;display: block;height: 0px;overflow: hidden;}
+		.box{margin: 100px auto;width: 450px;border: 1px solid black;position: relative;height: 150px;}
+		.group{background-color: orange;height: 30px;}
+		.group>a{float: left;text-decoration: none;text-align: center;line-height: 30px;}
+
+		.imagelist{position: absolute;top: 35px;left: 0px;display: none;}
+
+		.active{background-color: #fff;}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="group clear">
+			<a href="#" title="" class="active">第一组</a>
+			<a href="#" title="">第二组</a>
+			<a href="#" title="">第三组</a>
+		</div>
+		<div class="imagelist" style="display:block;">
+			<img src="images/0.jpg" alt="">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+		</div>
+		<div class="imagelist">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+			<img src="images/5.jpg" alt="">
+		</div>
+		<div class="imagelist">
+			<img src="images/6.jpg" alt="">
+			<img src="images/7.jpg" alt="">
+			<img src="images/8.jpg" alt="">
+		</div>
+	</div>
+	<!-- <script>
+	  window.onload = function(){
+	  	//aList 和 imagelist 下标一一对应
+	  	var aList = document.querySelectorAll('.group>a');
+	  	var imageList = document.getElementsByClassName('imagelist');
+	  	for (var i = 0; i < aList.length; i++) {
+            //给每一个a元素添加一个属性index，由它保存a的次序，可以通过该元素把它的次序取到
+	  		aList[i].index = i;
+	  		aList[i].onmouseover = function(ev){
+	  			//把当前的a设置为高亮，其他的取消高亮
+	  			//把和当前a对应的imagelist设置为显示其他的设置为不显示
+
+	  			//获取a的次序
+	  			var aIndex = this.index;
+	  			//遍历数组，把等于该次序的元素高亮，其他的取消高亮
+	  			//把等于该次序的imagelist设置为显示，其他的显示为不显示
+	  			for (var j = 0; j < aList.length; j++) {
+	  				if (j==aIndex) {
+	  					aList[j].className = 'active';
+	  					imageList[j].style.display = 'block';
+	  				}else{
+	  					aList[j].className = '';
+	  					imageList[j].style.display = 'none';
+	  				}
+	  			}
+	  		}
+	  	}
+	  }
+		
+	</script> -->
+	<script>
+		var aList = document.querySelectorAll('.group>a');
+		var imgList = document.querySelectorAll('.imagelist');
+
+		for (var i = 0; i < aList.length; i++) {
+            aList[i].index = i;
+            // console.log(aList[i].index);
+			aList[i].onmouseover = function(){
+				for (var j = 0; j < aList.length; j++) {
+					aList[j].className = '';
+					imgList[j].style.display = 'none';
+				}
+				this.className = 'active';
+				imgList[this.index].style.display = 'block';
+			}
+		}
+	</script>
+</body>
+</html>

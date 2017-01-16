@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css" media="screen">
+    *{
+    	margin: 0;
+    	padding: 0;
+    }
+    .clear:after {
+        height: 0px;
+        display: block;
+        overflow: hidden;
+        clear: both;
+        content: "";
+    }
+    .div {
+        width: 700px;
+        height: 105px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .div>ul {
+        width: 700px;
+        position: absolute;
+        height: 105px;
+        left: 0px;
+        top: 0px;
+    }
+    
+    .div>ul>li {
+        float: left;
+        width: 140px;
+        height: 105px;
+        list-style: none;
+    } 
+    </style>
+</head>
+
+<body>
+	<input type="button" name="" value="向左走" placeholder="">
+	<input type="button" name="" value="向右走" placeholder="">
+    <div class="div">
+        <ul class="clear">
+            <li><img src="images/0.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+    window.onload = function() {
+        var oDiv = document.getElementsByClassName('div')[0];
+        var oUl = document.querySelectorAll('ul')[0];
+        var speed = 2;
+     
+        oUl.innerHTML = oUl.innerHTML + oUl.innerHTML;
+
+        var aLi = document.querySelectorAll('ul>li');
+  
+        oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+        
+        function move(){
+        	if (parseInt(oUl.style.left) < -oUl.offsetWidth/2) {
+        		oUl.style.left = 0;
+        	}
+        	if (oUl.offsetLeft > 0) {
+        		oUl.style.left = -oUl.offsetWidth/2 + 'px';
+        	}
+        	oUl.style.left = oUl.offsetLeft + speed + 'px';
+        }
+        var timer = setInterval(move,30);
+        var oBtn = document.getElementsByTagName('input');
+
+        oBtn[0].onclick = function(){
+        	speed = -2;
+        }
+        oBtn[1].onclick = function(){
+        	speed = 2;
+        }
+        oUl.onmouseover = function(){
+        	clearInterval(timer);
+        }
+        oUl.onmouseout = function () {
+        	timer = setInterval(move,30);
+        }
+
+    }
+    </script>
+</body>
+
+</html>

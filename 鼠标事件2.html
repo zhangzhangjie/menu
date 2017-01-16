@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+	    *{margin: 0;padding: 0;}
+		#myDiv{width: 200px;height: 200px;background-color: red;}
+	</style>
+</head>
+<body>
+    <div id="myDiv"></div>
+	<script>
+		//mouseover 鼠标移动到元素上方时触发的事件
+		//mouseout  鼠标移出元素时触发的事件
+		//mouseover 和 onmouseout 事件会冒泡到父元素
+
+		var divElement = document.getElementById('myDiv');
+
+		divElement.onmouseover = function(){
+			console.log('onmouseover');
+		}
+		divElement.onmouseout = function(){
+			console.log('onmouseout');
+		}
+
+		//onmouseenter 和 onmouseleave 这两个事件不会产生冒泡行为
+		//当鼠标进入元素所在的区域时触发
+		divElement.onmouseenter = function(){
+			console.log('onmouseenter')
+		}
+		//当鼠标离开元素所在区域时触发
+		divElement.onmouseleave = function(){
+			console.log('onmouseleave');
+		}
+	</script>
+</body>
+</html>

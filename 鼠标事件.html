@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+	*{margin:0;padding: 0;}
+		#myDiv{width: 200px;height: 200px;background-color: #00f;position: absolute;top:100px;left: 100px;}
+	}
+	</style>
+</head>
+<body>
+	<div id="myDiv"></div>
+
+	<script>
+	// load 是发生在窗口上的事件，window也是一个对象，是一个全局变量，我们定义的所有的全局变量和函数都是该对象的属性
+	//文档的内容加载完毕，包括需要网络下载的CSS或图片，一切完毕系统发送一个load事件
+		window.onload = function(){
+			var divElement = document.getElementById('myDiv');
+
+			//鼠标点击在div上产生的事件
+			divElement.onclick = function(ev){
+				console.log('onclick 事件');
+			}
+			//鼠标在div上按下后产生的事件
+
+            //mousedown 是否发生
+			var downFlag = false;
+			divElement.onmousedown = function(ev){
+               console.log('onmousedown');
+               var e = ev || event;
+               //e.button 判断是鼠标哪个的哪一个键按下
+               //0 1 2 左中右
+               // console.log(e.button);
+               downFlag = true;
+			}
+			//鼠标在div元素上弹起时产生的事件
+			divElement.onmouseup = function(ev){
+                console.log('onmouseup事件');
+                downFlag = false;
+			}
+			divElement.onmousemove = function(ev){
+				// 鼠标在元素内部移动时产生的事件
+				//只要鼠标持续移动就会产生一个onmouseover事件，不要在该函数中做耗时的操作
+				console.log('onmousemove事件');
+				if (downFlag == false) {
+					return;
+				}
+			//获取鼠标所在的位置，然后修改元素的位置
+			 var e = ev || event;
+	         var xPos = e.clientX;
+	         var yPos = e.clientY;
+
+	         console.log(e.offsetX);
+	         console.log(e.offsetY);
+
+	         this.style.top = (yPos - offsetX) + 'px';
+	         this.style.left = (xPos - offsetY) + 'px';
+
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		div{
+			width: 200px;
+			height: 200px;
+			border:1px solid #f00;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="" id="text">
+	<input type="button" name="" value="提交" id="btn">
+	<div id="div"></div>
+
+	<script>
+		window.onload = function(){
+			var text = document.getElementById('text');
+			var btn = document.getElementById('btn');
+			var oDiv = document.getElementById('div');
+
+			btn.onclick = function(){
+				var val = text.value;
+				var newText =  '<p>'+val+'</p>';
+				// oDiv.innerHTML += newText;
+				oDiv.innerHTML = newText + oDiv.innerHTML;
+
+			}
+		} 
+	</script>
+</body>
+</html>
